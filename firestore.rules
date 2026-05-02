@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Booking requests: anyone can create, only admin/functions can read
+    match /bookingRequests/{docId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+
+    // Default: deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

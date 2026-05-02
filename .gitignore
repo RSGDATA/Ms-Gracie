@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+functions/node_modules/
+
+# Firebase config (contains API keys)
+public/js/firebase-config.js
+
+# Environment / secrets
+functions/.env
+functions/.env.*
+.env
+.env.*
+
+# Firebase local files
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+ui-debug.log
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
