@@ -32,7 +32,6 @@ navLinks.querySelectorAll('a').forEach(link => {
 });
 
 // ---- Navbar Scroll Effect ----
-let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const navbar = document.getElementById('navbar');
   const scrollY = window.scrollY;
@@ -42,7 +41,6 @@ window.addEventListener('scroll', () => {
   } else {
     navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.06)';
   }
-  lastScroll = scrollY;
 });
 
 // ---- Scroll Animations ----
@@ -61,15 +59,54 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Apply fade-in to sections
-document.querySelectorAll('.service-card, .music-card, .testimonial-card, .timeline-item, .song-card').forEach(el => {
+document.querySelectorAll('.service-card, .music-card, .testimonial-card, .timeline-item').forEach(el => {
   el.classList.add('fade-in');
   observer.observe(el);
 });
 
-// ---- Song Library ----
+// ---- Song Dropdown (Booking Form) ----
 const songCheckboxes = document.querySelectorAll('input[name="requestedSongs"]');
-const songSelectionBar = document.getElementById('songSelectionBar');
-const selectedCountEl = document.getElementById('selectedCount');
+const songDropdownTrigger = document.getElementById('songDropdownTrigger');
+const songDropdownMenu = document.getElementById('songDropdownMenu');
+const songDropdownLabel = document.getElementById('songDropdownLabel');
+const selectedSongsTags = document.getElementById('selectedSongsTags');
+const songDropdownItems = document.querySelectorAll('.song-dropdown-item');
+const songPagePrev = document.getElementById('songPagePrev');
+const songPageNext = document.getElementById('songPageNext');
+const songPageInfo = document.getElementById('songPageInfo');
+
+const SONGS_PER_PAGE = 10;
+const totalPages = Math.ceil(songDropdownItems.length / SONGS_PER_PAGE);
+let currentPage = 1;
+
+function renderPage() {
+  const start = (currentPage - 1) * SONGS_PER_PAGE;
+  const end = start + SONGS_PER_PAGE;
+  songDropdownItems.forEach((item, idx) => {
+    item.classList.toggle('visible', idx >= start && idx < end);
+  });
+  songPageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  songPagePrev.disabled = currentPage === 1;
+  songPageNext.disabled = currentPage === totalPages;
+}
+
+songPagePrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (currentPage > 1) {
+    currentPage--;
+    renderPage();
+  }
+});
+
+songPageNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPage();
+  }
+});
+
+renderPage();
 
 function getSelectedSongs() {
   return Array.from(songCheckboxes)
@@ -81,22 +118,46 @@ function updateSongSelection() {
   const selected = getSelectedSongs();
   const count = selected.length;
 
-  selectedCountEl.textContent = count === 0
-    ? '0 songs selected'
-    : count === 1
-      ? '1 song selected'
-      : `${count} songs selected`;
+  // Update trigger label
+  songDropdownLabel.textContent = count === 0
+    ? 'Song Collections'
+    : `${count} song${count > 1 ? 's' : ''} selected`;
+  songDropdownTrigger.classList.toggle('has-selections', count > 0);
 
-  songSelectionBar.classList.toggle('visible', count > 0);
-
-  // Toggle selected class on cards
-  songCheckboxes.forEach(cb => {
-    cb.closest('.song-card').classList.toggle('selected', cb.checked);
-  });
+  // Render tags
+  selectedSongsTags.innerHTML = selected.map(song =>
+    `<span class="song-tag">${song}<span class="song-tag-remove" data-song="${song}">&times;</span></span>`
+  ).join('');
 }
 
+// Toggle dropdown open/close
+songDropdownTrigger.addEventListener('click', () => {
+  songDropdownTrigger.classList.toggle('open');
+  songDropdownMenu.classList.toggle('open');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.song-dropdown-wrapper')) {
+    songDropdownTrigger.classList.remove('open');
+    songDropdownMenu.classList.remove('open');
+  }
+});
+
+// Update on checkbox change
 songCheckboxes.forEach(cb => {
   cb.addEventListener('change', updateSongSelection);
+});
+
+// Remove tag by clicking X
+selectedSongsTags.addEventListener('click', (e) => {
+  const removeBtn = e.target.closest('.song-tag-remove');
+  if (!removeBtn) return;
+  const song = removeBtn.dataset.song;
+  songCheckboxes.forEach(cb => {
+    if (cb.value === song) cb.checked = false;
+  });
+  updateSongSelection();
 });
 
 // ---- Form Validation ----

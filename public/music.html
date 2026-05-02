@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song Library — Gracie</title>
+  <meta name="description" content="Listen to Gracie's full repertoire of children's songs. Sample tracks and find the perfect songs for your event.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        Gracie <span class="note">&#9835;</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="music.html" class="active-link">Music</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#booking" class="nav-cta">Book Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== MUSIC PAGE HERO ========== -->
+  <section class="music-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Song Library</h1>
+      <p class="hero-sub">Listen to my full repertoire — find the perfect songs for your event!</p>
+      <a href="index.html#booking" class="btn btn-primary btn-lg">Book These Songs</a>
+    </div>
+  </section>
+
+  <!-- ========== SONG LIBRARY ========== -->
+  <section class="section" style="background: var(--white);">
+    <div class="container">
+      <p class="section-subtitle">Click play to sample any song. When you're ready, head to the booking form to request your favorites!</p>
+
+      <div class="songs-grid music-page-grid">
+
+        <div class="song-card">
+          <div class="song-info"><h4>A Walk</h4></div>
+          <audio controls preload="none"><source src="songs/A Walk.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Aiken Drum</h4></div>
+          <audio controls preload="none"><source src="songs/Aiken Drum.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Baby Beluga</h4></div>
+          <audio controls preload="none"><source src="songs/Baby Beluga.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Banana Phone</h4></div>
+          <audio controls preload="none"><source src="songs/Banana Phone.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Bingo / Mitzi</h4></div>
+          <audio controls preload="none"><source src="songs/Bingo-Mitzi.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Five Little Speckled Frogs</h4></div>
+          <audio controls preload="none"><source src="songs/Five Little Speckled Frogs.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Hop Little Bunnies</h4></div>
+          <audio controls preload="none"><source src="songs/Hop Little Bunnies.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Itsy Bitsy Spider</h4></div>
+          <audio controls preload="none"><source src="songs/Itsy Bitsy Spider.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>La Vaca Lola</h4></div>
+          <audio controls preload="none"><source src="songs/La Vaca Lola.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Silly Dreams</h4></div>
+          <audio controls preload="none"><source src="songs/Silly Dreams.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Skinnamarink</h4></div>
+          <audio controls preload="none"><source src="songs/Skinnamarink.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>The Bamba Song</h4></div>
+          <audio controls preload="none"><source src="songs/The Bamba Song.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Three Little Pumpkins</h4></div>
+          <audio controls preload="none"><source src="songs/Three Little Pumpkins.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="song-card">
+          <div class="song-info"><h4>Wheels On The Bus</h4></div>
+          <audio controls preload="none"><source src="songs/Wheels On The Bus.mp3" type="audio/mpeg"></audio>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="index.html#booking" class="btn btn-primary btn-lg">Book a Performance</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Gracie <span class="note">&#9835;</span></h3>
+          <p>Music outreach performer bringing joy to children across Dallas, TX and beyond.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="index.html#booking">Book Me</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <p>&#9993; gracie@example.com</p>
+          <p>&#9742; (555) 000-0000</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram">&#128247;</a>
+            <a href="#" class="social-icon" aria-label="YouTube">&#9654;</a>
+            <a href="#" class="social-icon" aria-label="Facebook">&#102;</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Gracie. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
